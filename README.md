@@ -19,3 +19,4 @@
 - [BEA API](https://apps.bea.gov/api/signup/)
 - [PySAL GIDDY](https://giddy.readthedocs.io/en/latest/)
 - [PySAL Inequality](https://inequality.readthedocs.io/en/latest/)
+- [GDS Inequality Chapter](https://geographicdata.science/book/notebooks/09_spatial_inequality.html)
