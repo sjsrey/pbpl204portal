@@ -17,6 +17,23 @@ import numpy as np
 def hhi(e):
     """
     HHI Index
+    HHI is an index of market concentration 
+    In other words, a higher value of HHI points to more concentration or activity in a specific sector and lower diversification
+    while a low value means lower concentration and more diversification. 
+
+    
+    Parameters
+    ----------
+    e:array-like
+
+    Attributes
+    ------------
+    
+      
+    
+    Notes
+    ----------
+    Based on Sergio J. rey <srey@asu.edu>
     """
     e=np.asarray(e)
     s = 100 * e / e.sum()
@@ -29,6 +46,25 @@ def hhi(e):
 def lq(region, base):
     """
     Location Quotient
+    
+    a way of quantifying how concentrated a particular industry, cluster, occupation, or demographic group is in a region as compared to the nation. 
+    It can reveal what makes a particular region “unique” in comparison to the national average.
+    In more exact terms, location quotient is a ratio that compares a region to a larger reference region according to some characteristic or asset. 
+    Suppose X is the amount of some asset in a region (e.g., manufacturing jobs), and Y is the total amount of assets of comparable types in the region (e.g., all jobs). 
+    X/Y is then the regional “concentration” of that asset in the region. If X’ and Y’ are similar data points for some larger reference region (like a state or nation),
+    then the LQ or relative concentration of that asset in the region compared to the nation is (X/Y) / (X’/Y’). 
+
+    Parameters
+    ----------
+    region: array-like
+    base: array-like
+    Pi: integer
+    pi: integer
+
+    Attributes:
+    -----------
+    lq: float
+    location quotient coefficient or ratio of comparison    
     """
     region=np.asarray(region)
     base=np.asarray(base)
@@ -39,6 +75,19 @@ def lq(region, base):
 def basic(region, base):
     """
     Basic Employment
+    
+    Defines a sector as basic employment if its location coefficient is greater than 1, all employment in such a sector will be designated basic employment
+
+    Parameters
+    ----------
+    region: array-like
+    base: array-like
+    lq_est: float
+
+    Attributes
+    ----------
+    basic: returns sectors whose location quotients are greater than 1
+
     """
     region=np.asarray(region)
     base=np.asarray(base)
@@ -49,6 +98,20 @@ def basic(region, base):
 def eb_multiplier(region, base):
     """
     Economic Base Multiplier
+
+     A measure that provides a rough estimate of how changes in basic employment will affect total employment in a given region
+     Ratio of the total number of jobs created to the number of basic jobs created. 
+     A higher economic base multiplier implies a larger effect of the basic job creator on the total number of jobs.
+
+    Read more: http://www.businessdictionary.com/definition/economic-base-multiplier.html
+
+    Parameters
+    ----------
+    region: array-like
+    base: array-like
+
+    Attributes:
+    eb_multiplier: float
     """
     region=np.asarray(region)
     base=np.asarray(base)
@@ -73,4 +136,4 @@ def gini(x):
     Based on Sergio J. rey <srey@asu.edu>
     """
     return inequality.gini.Gini(x)
-    
+
