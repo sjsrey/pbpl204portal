@@ -17,18 +17,20 @@ import numpy as np
 def hhi(e):
     """
     HHI Index
-    HHI is an index of market concentration 
-    In other words, a higher value of HHI points to more concentration or activity in a specific sector and lower diversification
-    while a low value means lower concentration and more diversification. 
+
+    HHI is an index of market concentration. In other words, a higher value of HHI points to more concentration or activity in a specific sector and lower diversification
+    while a low value means lower concentration and more diversification. Measure based on the economy as a whole, not individual sectors.
 
     
     Parameters
     ----------
-    e:array-like
+    e: array-like
+       vector of n values, one for each sector. Can be employment, income, wages, profits
 
-    Attributes
+    Return
     ------------
-    
+    Returns index 
+
       
     
     Notes
@@ -57,13 +59,17 @@ def lq(region, base):
     Parameters
     ----------
     region: array-like
-    base: array-like
-    Pi: integer
-    pi: integer
+            list of characteristics such as employment in various sectors
+    region of interest Ex: CA
 
-    Attributes:
+    base: array-like
+          list of characteristics such as employment in various sectors
+    base comparison Ex: US
+
+    Returns:
     -----------
-    lq: float
+   location quotients for each characteristic of comparison
+
     location quotient coefficient or ratio of comparison    
     """
     region=np.asarray(region)
@@ -81,12 +87,13 @@ def basic(region, base):
     Parameters
     ----------
     region: array-like
+            list of characteristics such as employment in various sectors
     base: array-like
-    lq_est: float
+          list of characteristics such as employment in various sectors
 
-    Attributes
+    Returns
     ----------
-    basic: returns sectors whose location quotients are greater than 1
+    basic: returns an estimate of the basic employment in sectors whose location quotients are greater than 1
 
     """
     region=np.asarray(region)
@@ -108,10 +115,13 @@ def eb_multiplier(region, base):
     Parameters
     ----------
     region: array-like
+            employment vector for the region of interest
     base: array-like
+            base vector for the specific sector or job of interest
 
-    Attributes:
-    eb_multiplier: float
+    Return:
+ *   eb_multiplier: float, 
+                    returns a value that represents how much employment is going to grow based on the base, usually greater than 1 suggesting one job will bring in x amount more jobs to the region.
     """
     region=np.asarray(region)
     base=np.asarray(base)
